@@ -14,9 +14,19 @@ router.get("/", async (req, res) => {
 });
 
 // Retorna um aluno com id especifico
-router.get("/:alunoId", async (req, res) => {
+// router.get("/:alunoId", async (req, res) => {
+//   try {
+//     const aluno = await Aluno.findById(req.params.alunoId);
+//     res.json(aluno);
+//   } catch (err) {
+//     res.status(404).json({ message: err });
+//   }
+// });
+
+// Retorna um aluno com ra especifico
+router.get("/:ra", async (req, res) => {
   try {
-    const aluno = await Aluno.findById(req.params.alunoId);
+    const aluno = await Aluno.find({ ra: req.params.ra });
     res.json(aluno);
   } catch (err) {
     res.status(404).json({ message: err });
@@ -55,9 +65,9 @@ router.post("/", async (req, res) => {
 });
 
 // DELETE
-router.delete("/:alunoId", async (req, res) => {
+router.delete("/:ra", async (req, res) => {
   try {
-    const removedAluno = await Aluno.remove({ _id: req.params.alunoId });
+    const removedAluno = await Aluno.remove({ ra: req.params.ra });
     res.json(removedAluno);
   } catch (err) {
     res.send({ message: err });
@@ -65,10 +75,10 @@ router.delete("/:alunoId", async (req, res) => {
 });
 
 // UPDATE
-router.patch("/:alunoId", async (req, res) => {
+router.patch("/:ra", async (req, res) => {
   try {
     const updatedAluno = await Aluno.updateOne(
-      { _id: req.params.alunoId },
+      { ra: req.params.ra },
       {
         $set: {
           nome: req.body.nome,
