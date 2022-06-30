@@ -21,6 +21,4 @@ app.get("/", (req, res) => {
 // CONNECTION
 mongoose.connect(process.env.DB_CONNECTION, () => console.log("connected"));
 
-app.listen(3000);
-
 module.exports = app;
