@@ -10,8 +10,8 @@ app.use(cors());
 app.use(bodyParser.json());
 const alunosRoute = require("./routes/alunos");
 app.use("/alunos", alunosRoute);
-const professoresRoute = require("./routes/professor");
-app.use("/professores", professoresRoute);
+// const professoresRoute = require("./routes/professor");
+// app.use("/professores", professoresRoute);
 
 // ROUTES
 app.get("/", (req, res) => {
@@ -22,3 +22,5 @@ app.get("/", (req, res) => {
 mongoose.connect(process.env.DB_CONNECTION, () => console.log("connected"));
 
 app.listen(3000);
+
+module.exports = app;
