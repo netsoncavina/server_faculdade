@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 // Retorna um professor com CPF especifico
 router.get("/:professorCPF", async (req, res) => {
   try {
-    const professor = await Professor.findById(req.params.professorCPF);
+    const professor = await Professor.find({ cpf: req.params.professorCPF });
     res.json(professor);
   } catch (err) {
     res.status(404).json({ message: err });

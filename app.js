@@ -10,8 +10,8 @@ app.use(cors());
 app.use(bodyParser.json());
 const alunosRoute = require("./routes/alunos");
 app.use("/alunos", alunosRoute);
-// const professoresRoute = require("./routes/professor");
-// app.use("/professores", professoresRoute);
+const professoresRoute = require("./routes/professores");
+app.use("/professores", professoresRoute);
 
 // ROUTES
 app.get("/", (req, res) => {
