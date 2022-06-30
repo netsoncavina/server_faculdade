@@ -19,7 +19,7 @@ router.get("/:alunoId", async (req, res) => {
     const aluno = await Aluno.findById(req.params.alunoId);
     res.json(aluno);
   } catch (err) {
-    res.json({ message: err });
+    res.status(404).json({ message: err });
   }
 });
 
@@ -33,7 +33,7 @@ router.get("/aluno/:nome", async (req, res) => {
     });
     res.json(aluno);
   } catch (err) {
-    res.json({ message: err });
+    res.status(404).json({ message: err });
   }
 });
 
@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
   });
   try {
     const savedAluno = await aluno.save();
-    res.json(savedAluno);
+    res.status(201).json(savedAluno);
   } catch (err) {
     res.json({ message: err });
   }
